@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Modify <%=festname%> fest</title>
+  </head>
+  <body>
+    <form class="" action="" method="post">
+      <h1><%=festname%> Fest Info: </h1>
+      <p>description: <%=fests[0].description%></p>
+      <% if(fests[0].website_link != ""){%>
+      <p>Website : <a href="<%=fests[0].website_link%>"><%=fests[0].website_link%></a></p>
+      <%}%>
+      <% if(fests[0].image != ""){%>
+      <p>image : <%=fests[0].image%></p>
+      <%}%>
+      <p>Fest Name: <input type="text" name="fest_name"></p>
+      <p>description <input type="text" name="description"></p>
+      <p>Website: <input type="text" name="website_link"></p>
+      <p>image url: <input type="text" name="image"></p>
+      <button type="action">Submit</button>
+    </form>
+  </body>
+</html>

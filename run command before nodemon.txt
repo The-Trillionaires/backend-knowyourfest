@@ -1,0 +1,1 @@
+mongod --dbpath "D:/Web development/Project 1/Knowyourfest/mongodb_data"
