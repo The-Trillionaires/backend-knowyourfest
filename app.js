@@ -1,10 +1,9 @@
-
+var authenticate = require('./authenticate');
 var express = require('express');
 const path = require('path');
 var ejs = require('ejs');
 var mongoose = require('mongoose');
-
-
+const passport = require('passport');
 
 var app = express();
 
@@ -21,11 +20,16 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var festsRouter = require('./routes/festsRouter');
 var adminRouter = require('./routes/adminRouter');
+var userRouter = require('./routes/users');
+
+
+app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/fests', festsRouter);
 app.use('/admin',adminRouter);
+
 
 app.listen('3000',function(err){
   if(err){console.log(err);}

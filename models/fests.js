@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const festsSchema = new Schema({
   fest_name:{
     type: String,
-    required:true
+    required:true,
+    unique:true
   },
   image:{
     type: String,

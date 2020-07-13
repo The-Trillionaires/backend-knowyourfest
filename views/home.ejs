@@ -7,10 +7,9 @@
   <body>
     <h1>Select the College</h1>
     <form class="" action="/fests" method="POST">
-      <button type="action" name="button" value = "pict">PICT</button>
-      <button type="action" name="button" value = "coep">COEP</button>
-      <button type="action" name="button" value = "pccoe">PCCOE</button>
-      <input type="hidden" name="route" value=<%=route%>>
+      <% for(i=0;i<All_college.length;i++){ %>
+        <button type="action" name="button" value = <%=All_college[i].name%>> <%=All_college[i].name%></button>
+      <%}%>
     </form>
   </body>
 </html>

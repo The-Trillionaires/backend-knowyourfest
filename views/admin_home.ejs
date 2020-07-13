@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>home</title>
+  </head>
+  <body>
+    <h1>Select the College</h1>
+    <form class="" action="" method="POST">
+      <% for(i=0;i<All_college.length;i++){ %>
+        <button type="action" name="button" value = <%=All_college[i].name%>> <%=All_college[i].name%></button>
+      <%}%>
+    </form>
+    <br><br><br><br>
+    <form class="" action="" method="post">
+      <button type="action" name="button" value="add_college">Click to Add college</button>
+      <button type="action" name="button" value="remove_college">Click to remove college</button>
+    </form>
+  </body>
+</html>
