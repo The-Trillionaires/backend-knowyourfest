@@ -7,7 +7,7 @@
   <body>
     <form class="" action="" method="post">
       <% for(i=0;i<All_college.length;i++){ %>
-        <p><input type="checkbox" name="delete_college" value=<%=All_college[i].name%>> <%=All_college[i].name%></p>
+        <p><input type="checkbox" name="delete_college" value=<%=All_college[i]._id%>> <%=All_college[i].name%></p>
       <%}%>
 
       <h2>All selected College will be deleted</h2>

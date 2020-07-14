@@ -8,6 +8,7 @@
     <p><%=College_name%> Fests:</p>
     <form class="" action="" method="post">
       <% for(i=0;i<All_fest.length;i++){ %>
+        <input type="hidden" name="id" value=<%=All_fest[i]._id%>>
         <p><input type="checkbox" name="modify_fest" value=<%=All_fest[i].fest_name%> </input> Fest Name: <%=All_fest[i].fest_name%></p>
         <p>description: <%=All_fest[i].description%></p>
         <% if(All_fest[i].website_link != ""){%>

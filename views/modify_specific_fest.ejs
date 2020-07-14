@@ -14,6 +14,7 @@
       <% if(fests[0].image != ""){%>
       <p>image : <%=fests[0].image%></p>
       <%}%>
+      <input type="hidden" name="id" value=<%=fests[0]._id%>>
       <p>Fest Name: <input type="text" name="fest_name"></p>
       <p>description <input type="text" name="description"></p>
       <p>Website: <input type="text" name="website_link"></p>

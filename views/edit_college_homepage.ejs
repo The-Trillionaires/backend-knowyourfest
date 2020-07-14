@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%=College_name%></title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+  </head>
+  <body>
+    <h1><%=College_name%> is Selected: </h1>
+    <form class="" action="" method="post">
+      <h2>Enter Description for homepage: </h2>
+      <input type="text" name="description">
+      <h2>Enter the tag name: </h2>
+      <input type="text" name="tag_name">
+      <h2>Enter the venue: </h2>
+      <input type="text" name="venue">
+      <br><br>
+      <h2>Select only one badge:</h2>
+      <p><input type="checkbox" name="badge_name" value="badge-primary"> <span class="badge badge-primary">Coming Soon</span></p>
+      <p><input type="checkbox" name="badge_name" value="badge-danger"> <span class="badge badge-danger">Coming Soon</span></p>
+      <p><input type="checkbox" name="badge_name" value="badge-success"> <span class="badge badge-success">Coming Soon</span></p>
+      <button type="action">Submit</button>
+    </form>
+  </body>
+</html>

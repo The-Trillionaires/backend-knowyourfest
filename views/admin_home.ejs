@@ -8,13 +8,16 @@
     <h1>Select the College</h1>
     <form class="" action="" method="POST">
       <% for(i=0;i<All_college.length;i++){ %>
-        <button type="action" name="button" value = <%=All_college[i].name%>> <%=All_college[i].name%></button>
+        <button type="action" name="college" value = <%=All_college[i]._id%>> <%=All_college[i].name%></button>
       <%}%>
     </form>
     <br><br><br><br>
     <form class="" action="" method="post">
-      <button type="action" name="button" value="add_college">Click to Add college</button>
-      <button type="action" name="button" value="remove_college">Click to remove college</button>
+      <button type="action" name="edit" value="add_college">Click to Add college</button>
+      <button type="action" name="edit" value="remove_college">Click to remove college</button>
+      <button type="action" name="edit" value="edit_homepage">Click to edit the home page</button>
+      <button type="action" name="edit" value="add_notification">Click to add the notification</button>
+      <button type="action" name="edit" value="delete_notification">Click to delete the notification</button>
     </form>
   </body>
 </html>

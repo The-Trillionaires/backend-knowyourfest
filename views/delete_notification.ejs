@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Delete Notification</title>
+  </head>
+  <body>
+    <h2>Select the notifcation which are to be delete:</h2>
+    <form class="" action="" method="post">
+      <%for(i=0;i<notification.length;i++){%>
+        <p><input type="checkbox" name="delete" value=<%=notification[i]._id%>><%=notification[i].text%></p>
+      <%}%>
+      <button type="action">Delete</button>
+    </form>
+  </body>
+</html>
