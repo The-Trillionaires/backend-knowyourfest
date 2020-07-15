@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schmea = mongoose.Schema;
 
 const college_homepage = new Schmea({
-  name:{
+  name: {
     type: String,
     required:true,
-    unqiue: true
+    unique: true
   },
   description:{
     type:String,

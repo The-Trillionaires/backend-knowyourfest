@@ -41,9 +41,9 @@ adminRouter.route("/add_college")
 })
 
 .post(function(req,res,next){
-  College_homepage.create(req.body)
+  College.create(req.body)
   .then(function(colleges){
-    return College.create(req.body)
+    return College_homepage.create(req.body)
   })
   .then(function(colleges){
     res.redirect('/admin')
