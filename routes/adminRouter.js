@@ -72,16 +72,16 @@ adminRouter.route("/remove_college")
 
 .post(function(req,res,next){
   delete_college = req.body.delete_college;
+  console.log(delete_college);
   if (typeof(delete_college) == typeof(" ")){
     College.find({_id:delete_college},function(err,college){
       college_name = college[0].name;
       if(err) next(err);
-      fests.deleteMany({name:college_name},function(err,result){
+      fests.deleteMany({college:college_name},function(err,result){
         if(err) next(err)
-      })
-
-      College_homepage.deleteOne({name:college_name},function(err,result){
-        if(err) next(err)
+        College_homepage.deleteOne({name:college_name},function(err,result){
+          if(err) next(err)
+        })
       })
     })
     College.deleteOne({_id:delete_college},function(err,result){
@@ -93,16 +93,20 @@ adminRouter.route("/remove_college")
       College.find({_id:delete_college[i]},function(err,college){
         if(err) next(err);
         else{
-          college_name = college[0].name
+          console.log(college);
+          college_name = college[0].name;
+          console.log(college_name);
+          College_homepage.deleteOne({name:college_name},function(err,result){
+            if(err) next(err)
+            console.log("College_homepage",result);
+          })
+          fests.deleteMany({college:college_name},function(err,result){
+            console.log("fests",result);
+            if(err) next(err)
+          })
         }
       })
-        College.deleteOne({_id:delete_college[i]},function(err,result){
-          if(err) next(err)
-        })
-        fests.deleteMany({name:college_name},function(err,result){
-          if(err) next(err)
-        })
-        College_homepage.deleteOne({name:college_name},function(err,result){
+        College.deleteMany({_id:delete_college[i]},function(err,result){
           if(err) next(err)
         })
       }
@@ -137,6 +141,7 @@ adminRouter.route("/edit_homepage")
  .post(function(req,res,next){
    notification.create(req.body)
    .then(function(result){
+     console.log(result);
      res.redirect("/admin");
    },function(err){next(err)})
    .catch(function(err){next(err)})

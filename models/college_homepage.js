@@ -23,7 +23,7 @@ const college_homepage = new Schmea({
     type:String,
     default:"badge-success"
   },
-  value:{
+  image_url:{
     type: String,
     default:""
   }
