@@ -26,6 +26,14 @@ const college_homepage = new Schmea({
   image_url:{
     type: String,
     default:""
+  },
+  date:{
+    type: String,
+    default: ""
+  },
+  remaing_days:{
+    type:String,
+    default:""
   }
 })
 

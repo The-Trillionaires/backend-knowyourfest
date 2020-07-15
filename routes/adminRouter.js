@@ -277,6 +277,11 @@ adminRouter.route("/:specific_college/edit_homepage")
 })
 
 .post(verifyCollege.verifyCollege,function(req,res,next){
+  var today = new Date()
+  const diffTime = Math.abs(new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate())-new Date(req.body.date));
+  const diffDays =Math.round((diffTime / (1000 * 60 * 60 * 24)));
+  req.body.remaing_days = diffDays;
+  console.log(req.body,req.params.specific_college);
   College_homepage.updateOne({name:req.params.specific_college},req.body,function(err,result){
     if(err) next(err)
     res.redirect("/admin/edit_homepage")

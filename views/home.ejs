@@ -30,7 +30,6 @@
                         <li class="nav-item"><a class="nav-link" href="./aboutus.html">About&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Menu&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Contact&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-
                 </ul>
             </div>
             </div>
@@ -72,7 +71,17 @@
               <div class="col col-sm col-md">
                   <div class="media">
                       <div class="media-body">
-                          <h2 class="mt-0"><%=All_college[i].venue%>  <span class="badge <%=All_college[i].badge_name%>" ><%=All_college[i].tag_name%></span></h2>
+                         <% if(All_college[i].remaing_days==0){%>
+                         <% badge_name = "badge-success";%>
+                         <% text = "Active"%>
+                        <% } else if(All_college[i].remaing_days<30){%>
+                        <%    badge_name = "badge-danger";%>
+                        <% text = All_college[i].remaing_days+" days to go"%>
+                        <%} else{%>
+                        <%    badge_name = "badge-primary";%>
+                        <% text = "Coming Soon"%>
+                        <%}%>
+                          <h2 class="mt-0"><%=All_college[i].venue%>  <span class="badge <%=badge_name%>" ><%=text%></span></h2>
                           <p class="d-none d-sm-block"><%=All_college[i].description%></p>
                       </div>
                       <div class="polaroid mr-1">

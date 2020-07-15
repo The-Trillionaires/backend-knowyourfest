@@ -4,14 +4,28 @@ const College_homepage = require('../models/college_homepage')
 var home = express.Router();
 var notifications = require('../models/notifications');
 
+function remaing_days(a, b){
+        // a should come before b in the sorted order
+        if(a.remaing_days < b.remaing_days){
+                return -1;
+        // a should come after b in the sorted order
+        }else if(a.remaing_days > b.remaing_days){
+                return 1;
+        // a and b are the same
+        }else{
+                return 0;
+        }
+}
 /* GET home page. */
 home.route("/")
 .get(function(req,res,next){
   College_homepage.find(function(err,colleges){
     if(err) next(err)
-    notifications.find(function(err,notification){
+    sorted_colleges = (colleges.sort(remaing_days))
+    notifications.find({},function(err,notifications){
       if(err) next(err)
-      res.render("home",{All_college:colleges,notification:notification});
+      console.log(sorted_colleges);
+      res.render('home',{All_college:sorted_colleges,notification:notifications})
     })
   })
 })
