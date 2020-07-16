@@ -6,10 +6,10 @@ var notifications = require('../models/notifications');
 
 function remaing_days(a, b){
         // a should come before b in the sorted order
-        if(a.remaing_days < b.remaing_days){
+        if(parseInt(a.remaing_days) < parseInt(b.remaing_days)){
                 return -1;
         // a should come after b in the sorted order
-        }else if(a.remaing_days > b.remaing_days){
+        }else if(parseInt(a.remaing_days) > parseInt(b.remaing_days)){
                 return 1;
         // a and b are the same
         }else{
@@ -22,6 +22,7 @@ home.route("/")
   College_homepage.find(function(err,colleges){
     if(err) next(err)
     sorted_colleges = (colleges.sort(remaing_days))
+    console.log(sorted_colleges);
     notifications.find({},function(err,notifications){
       if(err) next(err)
       console.log(sorted_colleges);
