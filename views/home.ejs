@@ -63,32 +63,43 @@
     </header>
 
     <%for(i=0;i<All_college.length;i++){%>
-      <div class="container">
-          <div class="row row-content align-items-center">
-              <div class="col-12 col-sm-4 col-md-3">
-                  <h3 class = "collegename"><%=All_college[i].name%></h3>
-              </div>
-              <div class="col col-sm col-md">
-                  <div class="media">
-                      <div class="media-body">
-                         <% if(All_college[i].remaing_days==0){%>
-                         <% badge_name = "badge-success";%>
-                         <% text = "Active"%>
-                        <% } else if(All_college[i].remaing_days<30){%>
-                        <%    badge_name = "badge-danger";%>
-                        <% text = All_college[i].remaing_days+" days to go"%>
-                        <%} else{%>
-                        <%    badge_name = "badge-primary";%>
-                        <% text = "Coming Soon"%>
-                        <%}%>
-                          <h2 class="mt-0"><%=All_college[i].venue%>  <span class="badge <%=badge_name%>" ><%=text%></span></h2>
-                          <p class="d-none d-sm-block"><%=All_college[i].description%></p>
-                      </div>
-                      <div class="polaroid mr-1">
-                          <img src=<%=All_college[i].image_url%> alt="image" style="width:100%" height="150">
-                      </div>
-                  </div>
-              </div>
+      <% if(All_college[i].show == "off"){ %>
+      <%  continue; %>
+      <%}%>
+      <% if(All_college[i].remaing_days == -1){ %>
+      <%  continue; %>
+      <%}%>
+        <div class="container">
+            <div class="row row-content align-items-center">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <a href="/fests/<%=All_college[i].name%> " class="homepage_link"><h3 class = "collegename"><%=All_college[i].name%></h3></a>
+                </div>
+                <div class="col col-sm col-md">
+                    <div class="media">
+                        <div class="media-body">
+                          <%if(All_college[i].date == ""){%>
+                          <% badge_name = "badge-primary";%>
+                          <%  text="Coming Soon" %>
+                          <%}else if(All_college[i].remaing_days==0){%>
+                           <% badge_name = "badge-success";%>
+                           <% text = "Active"%>
+                          <% } else if(All_college[i].remaing_days<30){%>
+                          <%    badge_name = "badge-danger";%>
+                          <% text = All_college[i].remaing_days+" days to go"%>
+                          <%} else{%>
+                          <%    badge_name = "badge-primary";%>
+                          <% text = new Date(All_college[i].date);%>
+                          <% text = text.toLocaleDateString("en-US",{month:"long",day: "numeric",year:"numeric"})%>
+                          <%}%>
+                            <h2 class="mt-0"><%=All_college[i].venue%>  <span class="badge <%=badge_name%>" ><%=text%></span></h2>
+                            <p class="d-none d-sm-block"><%=All_college[i].description%></p>
+                        </div>
+                        <div class="polaroid mr-1">
+                            <img src=<%=All_college[i].image_url%> alt="image" style="width:100%" height="150">
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>
     <%}%>
 

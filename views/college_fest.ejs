@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Know your Fest</title>
+</head>
+
+<body>
+  <nav class="navbar-dark bg-me navbar-expand-sm">
+    <div>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#Navbar" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div style="
+    padding: 10px 30px;
+">
+        <div class="navbar-collapse collapse" id="Navbar" style="">
+        <a class="navbar-brand" href="#">KYF</a>
+
+          <ul class="navbar-nav ml-auto topnav-left" style="
+    padding-bottom: 0px;
+    margin-left: 500px;
+">
+
+            <li class="nav-item active"><a class="nav-link" href="">Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="nav-item"><a class="nav-link" href="">About&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Contact&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+
+          </ul>
+
+        </div>
+        </div>
+      </div>
+  </nav>
+  <section>
+
+  <div>
+      <div>
+        <div class="blueback">
+          <div class="section-content">
+            <span class="homepageupsection"><a>XYZ NOW LIVE</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row row-header">
+        <div class="col-12">
+          <h1>
+            <center><%=College_name%></center>
+
+          </h1>
+          <%if(College_short_name){%>
+            <h4><center><%=College_short_name%></center><h4>
+          <%}%>
+          <p>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </header>
+
+
+
+    <div class="row">
+  <ol class="col-12 breadcrumb">
+        <li class="breadcrumb-item padding-left"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active"><%=College_name%></li>
+
+      </ol>
+    </div>
+
+    <% for(i=0;i<fests.length;i++){ %>
+      <div class = "container">
+
+    <div class="row">
+              <div class="col-12 col-sm-6 fest_info">
+              <div class="card">
+
+                <div class="card-block">
+                  <h2 class="card-title"><span class="badge badge-warning"><%=fests[i].fest_name%></span></h2>
+                  <span class="badge badge-secondary"><%=fests[i].date%></span>
+                  <p class="card-text"><%=fests[i].description%></p>
+                  <a href="#" class="btn btn-primary">Learn More</a>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+    <%} %>
+
+
+
+
+
+
+
+  <nav class="navbar-light bgdown navbar-expand">
+
+      <div class="container">
+        <div class="collapse navbar-collapse navbar-center" id="Navbar">
+          <ul class=" col-xs-12 navbar-nav offset-sm-5 align">
+            <li class="nav-item"><a class="nav-link" href="/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="nav-item"><a class="nav-link" href="./aboutus.html">About&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+</ul>
+
+
+</div>
+        </div>
+        <p style="text-align: center">Copyright © 2020 Know Your Fest All rights reserved.<p>
+
+
+  </nav>
+
+  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

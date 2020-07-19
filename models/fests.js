@@ -22,7 +22,15 @@ const festsSchema = new Schema({
   college: {
     type: String,
     required:true
-  }
+  },
+  date:{
+    type: String,
+    default: "Coming Soon"
+  },
+  remaing_days:{
+    type:String,
+    default:999999999
+  },
 },{
   timestamps:true
 });

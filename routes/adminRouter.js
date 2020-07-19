@@ -9,6 +9,8 @@ const College_homepage = require("../models/college_homepage")
 const authenticate = require('../authenticate');
 const verifyCollege = require('../verifyCollege');
 const notification = require('../models/notifications');
+const updateInfo = require('../updateInfo');
+ var ObjectId = require('mongodb').ObjectID;
 
 const app = express();
 app.use(express.static("public"));
@@ -41,25 +43,25 @@ adminRouter.route("/add_college")
 })
 
 .post(function(req,res,next){
-  College.create(req.body)
+  name = {}
+  for(i=req.body.name.length-1;i>=0;i--){
+    if(req.body.name[i]!=" "){
+      name.name = req.body.name.substring(0,i+1);
+      break;
+    }
+  }
+  name.short_name = req.body.short_name
+  College.create(name)
   .then(function(colleges){
-    return College_homepage.create(req.body)
+    return College_homepage.create(name)
   })
   .then(function(colleges){
     res.redirect('/admin')
   })
   .catch(function(err){next(err)})
+
 })
 
-.post(function(req,res,next){
-  College.create(req.body,function(err,college){
-    if(err) next(err)
-    College_homepage.create(req.body,function(err,college){
-      if(err) next(err)
-      res.redirect("/admin")
-    })
-  })
-})
 
 adminRouter.route("/remove_college")
 .get(function(req,res,next){
@@ -72,7 +74,6 @@ adminRouter.route("/remove_college")
 
 .post(function(req,res,next){
   delete_college = req.body.delete_college;
-  console.log(delete_college);
   if (typeof(delete_college) == typeof(" ")){
     College.find({_id:delete_college},function(err,college){
       college_name = college[0].name;
@@ -93,15 +94,11 @@ adminRouter.route("/remove_college")
       College.find({_id:delete_college[i]},function(err,college){
         if(err) next(err);
         else{
-          console.log(college);
           college_name = college[0].name;
-          console.log(college_name);
           College_homepage.deleteOne({name:college_name},function(err,result){
             if(err) next(err)
-            console.log("College_homepage",result);
           })
           fests.deleteMany({college:college_name},function(err,result){
-            console.log("fests",result);
             if(err) next(err)
           })
         }
@@ -128,8 +125,12 @@ adminRouter.route("/edit_homepage")
  .post(function(req,res,next){
    College_homepage.find({_id:req.body.edit_college},function(err,college){
      if(err) next(err)
-     url = "/admin/"+college[0].name+"/edit_homepage";
-     res.redirect(url)
+     if(college.length==0){
+       res.redirect('/admin/edit_homepage');
+     }else{
+       url = "/admin/"+college[0].name+"/edit_homepage";
+       res.redirect(url)
+     }
    });
  })
 
@@ -141,7 +142,6 @@ adminRouter.route("/edit_homepage")
  .post(function(req,res,next){
    notification.create(req.body)
    .then(function(result){
-     console.log(result);
      res.redirect("/admin");
    },function(err){next(err)})
    .catch(function(err){next(err)})
@@ -199,12 +199,22 @@ adminRouter.route("/:specific_college/add_fest")
   fest = req.body
   fest.fest_name = fest.fest_name
   fest.college = req.params.specific_college;
+  var today = new Date();
+  if(fest.date != ""){
+    if ((new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate()))<new Date(fest.date)){
+      const diffTime = Math.abs(new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate())-new Date(fest.date));
+      const diffDays =Math.round((diffTime / (1000 * 60 * 60 * 24)));
+      fest.remaing_days = diffDays;
+    } else{
+      fest.remaing_days = -1
+    }
+  }
   fests.create(fest)
   .then(function(fest){
     return fests.find({college: req.params.specific_college})
   })
   .then(function(fests){
-    res.render("fests_info",{College_name: req.params.specific_college,fests:fests})
+    res.redirect("/admin/"+req.params.specific_college)
   },function(err){next(err);})
   .catch(function(err){next(err);})
 })
@@ -212,7 +222,7 @@ adminRouter.route("/:specific_college/add_fest")
 adminRouter.route("/:specific_college/remove_fest")
 .get(verifyCollege.verifyCollege,function(req,res,next){
   fests.find({college: req.params.specific_college},function(err,fests){
-    if(err) console.log(err);
+    if(err) next(err);
     res.render('remove_fest',{College_name:req.params.specific_college,All_fest: fests});
   })
 })
@@ -239,17 +249,20 @@ fests.find({college:req.params.specific_college})
 adminRouter.route("/:specific_college/modify_fest")
 .get(verifyCollege.verifyCollege,function(req,res,next){
   fests.find({college: req.params.specific_college},function(err,fests){
-    if(err) console.log(err);
+    if(err) next(err);
     res.render('modify_fest',{College_name:req.params.specific_college,All_fest: fests});
   })
 })
 
 .post(verifyCollege.verifyCollege,function(req,res,next){
-  fests.find({_id:req.body.id},function(err,college){
-    url = "modify_fest/"+college[0].fest_name;
+  fests.find({_id:req.body.modify_fest},function(err,fests){
+  if(fests.length != 0){
+    url = "modify_fest/"+fests[0].fest_name;
     res.redirect(url);
+  } else{
+    res.redirect(req.params.specific_college+"/modify_fest")
+  }
   })
-
 })
 
 
@@ -264,7 +277,8 @@ adminRouter.route("/:specific_college/modify_fest/:specific_event")
 })
 
 .post(verifyCollege.verifyCollege,function(req,res,next){
-  fests.updateOne({college: req.params.specific_college,fest_name: req.params.specific_event},req.body)
+  update = updateInfo.updatefest_info(req,res,next)
+  fests.updateOne({college: req.params.specific_college,fest_name: req.params.specific_event},update)
   .then(function(){
     url = "/admin/"+req.params.specific_college+"/modify_fest";
     res.redirect(url);
@@ -278,11 +292,24 @@ adminRouter.route("/:specific_college/edit_homepage")
 
 .post(verifyCollege.verifyCollege,function(req,res,next){
   var today = new Date()
-  const diffTime = Math.abs(new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate())-new Date(req.body.date));
-  const diffDays =Math.round((diffTime / (1000 * 60 * 60 * 24)));
-  req.body.remaing_days = diffDays;
-  console.log(req.body,req.params.specific_college);
-  College_homepage.updateOne({name:req.params.specific_college},req.body,function(err,result){
+  if(req.body.date != ""){
+    if ((new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate()))<new Date(req.body.date)){
+      const diffTime = Math.abs(new Date(today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate())-new Date(req.body.date));
+      const diffDays =Math.round((diffTime / (1000 * 60 * 60 * 24)));
+      req.body.remaing_days = diffDays;
+    } else{
+      req.body.remaing_days = -1
+    }
+  }
+
+  if(typeof(req.body.show)!= typeof(" ")){
+    var err = new Error("Pls Select Only one Option")
+    err.statusCode = 404;
+    return next(err)
+  }
+
+  updateValue = updateInfo.updateHomepage_value(req,res,next)
+  College_homepage.updateOne({name:req.params.specific_college},updateValue,function(err,result){
     if(err) next(err)
     res.redirect("/admin/edit_homepage")
   })

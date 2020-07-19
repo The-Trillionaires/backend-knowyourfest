@@ -6,6 +6,11 @@ const collegeSchema = new Schema({
     type: String,
     required:true,
     unique: true
+  },
+  short_name: {
+    type: String,
+    required:true,
+    unique: true
   }
 },{timestamp: true});
 

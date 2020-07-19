@@ -1,23 +1,23 @@
-const fests = require('../models/fests')
+const fests = require('../models/fests');
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 var festsRouter = express.Router();
-const verifyCollege = require('../verifyCollege')
-
-festsRouter.route("/")
-.post(function(req,res,next){
-    url = "fests/"+req.body.button;
-    res.redirect(url);
-})
+const verifyCollege = require('../verifyCollege');
+const Colleges = require('../models/colleges');
+const sortCollege = require('../sortCollege');
 
 festsRouter.route("/:specific_college")
 .get(verifyCollege.verifyCollege,function(req,res,next){
   fests.find({college:req.params.specific_college})
   .then(function(fests){
-    res.statusCode = 200;
-    res.setHeader('Content-Type','text/html')
-    res.render("fests_info",{fests:fests,College_name:req.params.specific_college});
+    update = sortCollege.update_remainingdays(fests,'fests')
+    Colleges.find({name:req.params.specific_college},function(err,college){
+      res.statusCode = 200;
+      res.setHeader('Content-Type','text/html')
+      sorted_colleges = (fests.sort(sortCollege.remaing_days))
+      res.render("college_fest",{fests:fests,College_name:req.params.specific_college,College_short_name: college[0].short_name});
+    })
   },function(err){next(err);})
   .catch(function(err){next(err);})
 })

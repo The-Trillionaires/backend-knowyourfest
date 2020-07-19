@@ -11,17 +11,9 @@ const college_homepage = new Schmea({
     type:String,
     default:""
   },
-  tag_name:{
-    type:String,
-    default:"Coming Soon"
-  },
   venue:{
     type:String,
     default:"Pune"
-  },
-  badge_name:{
-    type:String,
-    default:"badge-success"
   },
   image_url:{
     type: String,
@@ -32,8 +24,12 @@ const college_homepage = new Schmea({
     default: ""
   },
   remaing_days:{
-    type:String,
-    default:""
+    type:Number,
+    default:999999999
+  },
+  show:{
+    type: String,
+    default: 'off'
   }
 })
 
