@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Remove College</title>
+  </head>
+  <body>
+
+    <h1 style="text-align: center">Remove College</h1>
+      <div class = "container">
+
+          <div class="col-12" align ="center">
+    <form class="" action="" method="post">
+      <% for(i=0;i<All_college.length;i++){ %>
+        <p><input type="checkbox" name="delete_college" value=<%=All_college[i]._id%>> <%=All_college[i].name%></p>
+      <%}%>
+
+      <h2>All selected College will be deleted</h2>
+      <button type="action">Delete College</button>
+    </form>
+  </body>
+</html>

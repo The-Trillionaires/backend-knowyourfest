@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>home</title>
+  </head>
+  <body>
+    <h1>Select the College</h1>
+    <form class="" action="" method="POST">
+      <% for(i=0;i<All_college.length;i++){ %>
+        <button type="action" name="college" value = < %=All_college[i]._id% %=All_college[i].name%></button>%}%>
+    </form>
+    <br><br><br><br>
+
+    <h1 style="text-align: center">Modify</h1>
+      <div class = "container">
+
+          <div class="col-12" align ="center">
+    <form class="" action="" method="post">
+      <button type="action" name="edit" value="add_college">Click to Add college</button><br><br>
+      <button type="action" name="edit" value="remove_college">Click to remove college</button><br><br>
+      <button type="action" name="edit" value="edit_homepage">Click to edit the home page</button><br><br>
+      <button type="action" name="edit" value="add_notification">Click to add the notification</button><br><br>
+      <button type="action" name="edit" value="delete_notification">Click to delete the notification</button>
+    </form>
+              </div>
+      </div>
+  </body>
+</html>

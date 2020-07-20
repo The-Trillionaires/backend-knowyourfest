@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title><%=College_name%> fest modify</title>
+  </head>
+  <body>
+    <p><%=College_name%> Fests:</p>
+    <div class = "container">
+
+        <div class="col-12" align ="center">
+    <form class="" action="" method="post">
+      <% for(i=0;i<All_fest.length;i++){ %>
+        <p><input type="checkbox" name="modify_fest" onChange="this.form.submit()" value=<%=All_fest[i]._id%> </input> Fest Name: <%=All_fest[i].fest_name%></p>
+        <p>description: <%=All_fest[i].description%></p>
+        <% if(All_fest[i].website_link != ""){%>
+        <p>Website : <a href="<%=All_fest[i].website_link%>"><%=All_fest[i].website_link%></a></p>
+        <%}%>
+        <% if(All_fest[i].image != ""){%>
+        <p>image : <%=All_fest[i].image%></p>
+        <%}%>
+        <p>Date : <%=All_fest[i].date%></p>
+        <%}%>
+    </form>
+  </body>
+</html>

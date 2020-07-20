@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Delete Notification</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Select the notifications to be deleted</h1>
+      <div class = "container">
+
+          <div class="col-12" align ="center">
+    <form class="" action="" method="post">
+      <%for(i=0;i<notification.length;i++){%>
+        <p><input type="checkbox" name="delete" value=<%=notification[i]._id%>><%=notification[i].text%></p>
+      <%}%><br>
+      <button type="action">Delete</button>
+    </form>
+  </body>
+</html>

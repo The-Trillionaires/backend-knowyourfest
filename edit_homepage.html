@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title></title>
+</head>
+<body>
+  <h1 style="text-align: center">Select the college:</h1>
+    <div class = "container">
+
+        <div class="col-12" align ="center">
+  <form class="" action="" method="post">
+    <% for(i=0;i<all_college.length;i++){%>
+      <p><input type="checkbox" name="edit_college" value=<%=all_college[i]._id%> onChange="this.form.submit()"><%=all_college[i].name%></p>
+    <%}%>
+  </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Remove <%=College_name%> Fest</title>
+  </head>
+  <body>
+    <h2 style="text-align: center"><%=College_name%> Fests:</h2>
+    <div class = "container">
+
+        <div class="col-12" align ="center">
+
+
+    <form class="" action="" method="post">
+      <% for(i=0;i<All_fest.length;i++){ %>
+        <input type="hidden" name="id" value=<%=All_fest[i]._id%>>
+        <p><input type="checkbox" name="delete_fest" value=<%=All_fest[i].fest_name%> </input> Fest Name: <%=All_fest[i].fest_name%></p>
+        <p>description: <%=All_fest[i].description%></p>
+        <% if(All_fest[i].website_link != ""){%>
+        <p>Website : <a href="<%=All_fest[i].website_link%>"><%=All_fest[i].website_link%></a></p>
+        <%}%>
+        <% if(All_fest[i].image != ""){%>
+        <p>image : <%=All_fest[i].image%></p>
+        <%}%>
+        <%}%>
+        <p>All Selected Fests will be deleted</p>
+        <button type="action" name="button">Delete</button>
+    </form>
+  </body>
+</html>
