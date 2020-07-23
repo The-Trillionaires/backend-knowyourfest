@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+<link rel="stylesheet" href="css/styles.css">
     <title><%=College_name%> fest modify</title>
+    <nav class="navbar-dark bg-me navbar-expand-sm">
+    <div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="container">
+        <div class="collapse navbar-collapse" id="Navbar">
+        <a class="navbar-brand" href="#">KYF</a>
+      </div>
+    </div>
+    </div>
+    </nav>
+
+    <header class="jumbotron">
+    <div class="container">
+      <div class="row row-header">
+        <div class="col-12">
+
+
+
+          <h2><center>Modify Fest!</center><h2>
+          <p>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+    </header>
+
+    <div class="row">
+    <ol class="col-12 breadcrumb home_padding">
+          <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+          <li class="breadcrumb-item active">Modify_fest</li>
+
+        </ol>
+      </div>
   </head>
   <body>
-    <p><%=College_name%> Fests:</p>
+    <h3 style="text-align: center"><%=College_name%> Fests:</h3>
     <div class = "container">
 
         <div class="col-12" align ="center">
@@ -23,6 +68,23 @@
         <%}%>
         <p>Date : <%=All_fest[i].date%></p>
         <%}%>
-    </form>
+    </form><br><br>
+
+    <nav class="navbar-light bgdown navbar-expand">
+  <div>
+    <div class="container text-center">
+      <div class="collapse navbar-collapse navbar-center" id="Navbar">
+        <ul class="navbar-nav align">
+          <li class="nav-item"><a class="nav-link" href="#">Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        </ul>
+
+
+
+      </div>
+      <p style="text-align: center">Copyright © 2020 Know Your Fest All rights reserved.
+      <p>
+    </div>
+  </div>
+  </nav>
   </body>
 </html>

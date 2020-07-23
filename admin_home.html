@@ -1,31 +1,153 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <title>home</title>
-  </head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+<link rel="stylesheet" href="css/styles.css">
+<title>Know your Fest</title>
+</head>
   <body>
-    <h1>Select the College</h1>
+    <nav class="navbar-dark bg-me navbar-expand-sm">
+    <div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="container">
+        <div class="collapse navbar-collapse" id="Navbar">
+        <a class="navbar-brand" href="#">KYF</a>
+
+          <ul class="navbar-nav ml-auto topnav-right">
+
+
+          </ul>
+          <span class="navbar-text">
+            <a data-toggle="modal" data-target="#loginModal">
+              <span class="fa fa-sign-in"></span> Login</a>
+          </span>
+
+        </div>
+        </div>
+    </div>
+  </nav>
+  <div id="loginModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-md" role="content">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header" style="background-color: primary">
+                  <h4 class="modal-title" style="color: white ">Login </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" style="background-color: white">
+                  <form>
+                      <div class="form-row">
+                          <div class="form-group col-sm-6">
+                                  <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                                  <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-group col-sm-6">
+                              <label class="sr-only" for="exampleInputPassword3">Password</label>
+                              <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="col-sm-auto">
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox">
+                                  <label class="form-check-label"> Remember me
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <header class="jumbotron">
+  <div class="container">
+    <div class="row row-header">
+      <div class="col-12">
+
+
+
+        <h2><center>Select the college!</center><h2>
+        <p>
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+</header>
+
     <form class="" action="" method="POST">
       <% for(i=0;i<All_college.length;i++){ %>
         <button type="action" name="college" value = < %=All_college[i]._id% %=All_college[i].name%></button>%}%>
     </form>
-    <br><br><br><br>
+    <br><br>
 
-    <h1 style="text-align: center">Modify</h1>
+    <h1 style="text-align: center"><span class="badge badge-primary">MODIFY</span></h1>
       <div class = "container">
 
           <div class="col-12" align ="center">
     <form class="" action="" method="post">
-      <button type="action" name="edit" value="add_college">Click to Add college</button><br><br>
-      <button type="action" name="edit" value="remove_college">Click to remove college</button><br><br>
-      <button type="action" name="edit" value="edit_homepage">Click to edit the home page</button><br><br>
-      <button type="action" name="edit" value="add_notification">Click to add the notification</button><br><br>
-      <button type="action" name="edit" value="delete_notification">Click to delete the notification</button>
-    </form>
+      <button type = "submit" class = "btn btn-warning">
+        Click to add college
+      </button>
+      <button type = "submit" class = "btn btn-warning">
+        Click to remove college
+      </button>
+      <button type = "submit" class = "btn btn-warning">
+        Click to edit the home page
+      </button>
+      <button type = "submit" class = "btn btn-warning">
+        Click to add notification
+      </button>
+      <button type = "submit" class = "btn btn-warning">
+        Click to delete notification
+      </button>    </form>
               </div>
       </div>
+      <br><br>
+
+      <nav class="navbar-light bgdown navbar-expand">
+    <div>
+      <div class="container text-center">
+        <div class="collapse navbar-collapse navbar-center" id="Navbar">
+          <ul class="navbar-nav align">
+            <li class="nav-item"><a class="nav-link" href="#">Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          </ul>
+
+
+
+        </div>
+        <p style="text-align: center">Copyright © 2020 Know Your Fest All rights reserved.
+        <p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- build:js js/main.js -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/tether/dist/js/tether.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <!-- endbuild -->
+  <script src="js/scripts.js"></script>
+  <!-- endbuild -->
   </body>
 </html>

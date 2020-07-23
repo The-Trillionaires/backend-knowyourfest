@@ -1,5 +1,184 @@
-.container{
-  margin: auto;
-  background-color: #017AFF;
-  color: #FEFFFF
+.row-header {
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.row-content {
+    margin: 0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px;
+}
+
+.footer{
+    background-color: #D1C4E9;
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron{
+    padding: 70px 30px 70px 30px;
+    margin: 0px auto;
+
+    color: rgb(8, 8, 8);
+    background-color: #FFE4C4;
+}
+
+.address{
+    font-size: 80%;
+    margin: 0px;
+    color: #f10e0e
+}
+
+.bg-me{
+    background-color: #333333;
+
+}
+
+.btn-me {
+    background-color: rgb(207, 207, 245);
+    color: white;
+
+}
+
+.tablemine{
+    text-align: center;
+}
+
+.collegename {
+    text-align: left;
+}
+
+.mytablecolour{
+    background-color: fuchsia;
+}
+.myfont{
+    color: floralwhite;
+}
+
+.mybuttoncolour{
+    background-color: rgb(255, 185, 8);
+}
+
+.thisonly{
+    font-size: x-large;
+}
+
+.homepageupsection {
+    padding: 12px 0;
+    /* background: #0071E3; */
+    color: #ffffff;
+    margin-top: 0;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .blueback {
+        background: #0071E3;
+        }
+
+
+        div.polaroid {
+            width: 250px;
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+          }
+
+          div.container {
+            padding: 10px;
+          }
+.bgdown{
+    background: #f5f5f7;
+}
+.navbar-text{
+  text-align:right;
+
+}
+
+.modal-header{
+  background: #0071E3
+}
+
+.modal-body{
+  color: rgb(7, 7, 7);
+}
+
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 20px;
+}
+
+.row {margin: 0 -10px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:768px) {
+img {
+    width:100%;
+}
+.container {
+    max-width:70%;
+    width: 100%;
+}
+.col-md-3{
+    width:100%;
+    float:left;
+    margin:0;
+}
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 80px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin: 0 auto;
+}
+
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+
+.align {
+  margin:auto;
+}
+
+.home_padding{
+  padding-left:20px
+}
+
+.fest_info{
+text-align: center;
+margin:0 auto;
+margin-bottom: 20px;
+margin-top: 20px;
+
+}
+
+
+.jumbotron{
+    padding: 70px 30px 70px 30px;
+    margin: 0px auto;
+
+    color: rgb(8, 8, 8);
+    background-color: #FFE4C4;
 }

@@ -1,31 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+<link rel="stylesheet" href="css/styles.css">
     <title>Modify <%=festname%> fest</title>
+
+    <nav class="navbar-dark bg-me navbar-expand-sm">
+    <div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="container">
+        <div class="collapse navbar-collapse" id="Navbar">
+        <a class="navbar-brand" href="#">KYF</a>
+      </div>
+    </div>
+    </div>
+    </nav>
+
+    <header class="jumbotron">
+    <div class="container">
+      <div class="row row-header">
+        <div class="col-12">
+
+
+
+          <h2><center>Modify Specific Fest!</center><h2>
+          <p>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+    </header>
+
+    <div class="row">
+    <ol class="col-12 breadcrumb home_padding">
+          <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+          <li class="breadcrumb-item active">Modify Specific Fest</li>
+
+        </ol>
+      </div>
   </head>
   <body>
     <form class="" action="" method="post">
-      <h1 style="text-align: center"><%=festname%> Fest Info: </h1>
+      <h3 style="text-align: center"><%=festname%> Fest Info: </h3>
       <div class = "container">
 
-          <div class="col-12" align ="center">
+          <div class="col-12 col-sm-6 offset-sm-3" align ="center">
       <p>description: <%=fests[0].description%></p>
       <% if(fests[0].website_link != ""){%>
       <p>Website : <a href="<%=fests[0].website_link%>"><%=fests[0].website_link%></a></p>
       <%}%>
       <% if(fests[0].image != ""){%>
       <p>image : <%=fests[0].image%></p>
-      <%}%>
+      <%}%><br>
       <input type="hidden" name="id" value=<%=fests[0]._id%>>
-      <p>Fest Name: <input type="text" name="fest_name"></p>
-      <p>description <input type="text" name="description"></p>
-      <p>Website: <input type="text" name="website_link"></p>
-      <p>image url: <input type="text" name="image"></p>
-      <p>Date: <input type="date" name="date"></p>
-      <button type="action">Submit</button>
+      <p><b>FEST NAME:</b> <input type = "text" class = "form-control" id = "festname" name = "festname"
+        placeholder = "Name of Fest"></p>
+        <p><b>DESCRIPTION:</b> <input type = "text" class = "form-control" id = "discription" name = "discription"
+          placeholder = "Description"></p>
+          <p><b>WEBSITE:</b> <input type = "text" class = "form-control" id = "website" name = "website"
+            placeholder = "Website Link"></p>
+             <p><b>IMAGE URL:</b> <input type = "text" class = "form-control" id = "imgurl" name = "imgurl"
+            placeholder = "Image URL"></p>
+            <p><b>DATE: </b><input type = "date" class = "form-control" id = "date" name = "date"
+              placeholder = "Date"></p>
+
+              <button type = "submit" class = "btn btn-primary">
+                Submit
+              </button>
     </form>
+  <br><br>
+
+    <nav class="navbar-light bgdown navbar-expand">
+  <div>
+    <div class="container text-center">
+      <div class="collapse navbar-collapse navbar-center" id="Navbar">
+        <ul class="navbar-nav align">
+          <li class="nav-item"><a class="nav-link" href="#">Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        </ul>
+
+
+
+      </div>
+      <p style="text-align: center">Copyright © 2020 Know Your Fest All rights reserved.
+      <p>
+    </div>
+  </div>
+  </nav>
   </body>
 </html>
